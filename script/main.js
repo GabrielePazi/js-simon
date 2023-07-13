@@ -17,7 +17,7 @@ setInterval(function() {
     document.querySelector(".boom").innerHTML = "Tempo Scaduto!!!";
   }, differenceInMilliseconds)
 
-}, 1000);
+}, 100);
 
 
 function newCountdownDate(day, hour, minute, second) {
