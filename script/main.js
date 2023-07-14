@@ -1,23 +1,22 @@
-const timer = document.querySelector(".timer");
-const boomDate = newCountdownDate(14, 9, 30, 0); //il 14 alle 9:30:00
+const timerContainer = document.querySelector(".timer");
+const boomDate = newCountdownDate(14, 9, 46, 0); //il 14 alle 9:30:00
 let differenceInMilliseconds = 0;
 
-setInterval(function() {
+const timer = setInterval(function() {
   const today = new Date();
 
   differenceInMilliseconds = differenceTodayAndDate(today, boomDate);
-
-  if (differenceInMilliseconds <= 0) {
-    return
-  }
 
   updateTimer(differenceInMilliseconds);
 
   setTimeout(function() {
     document.querySelector(".boom").innerHTML = "Tempo Scaduto!!!";
+    clearInterval(timer);
   }, differenceInMilliseconds)
 
 }, 100);
+
+
 
 
 function newCountdownDate(day, hour, minute, second) {
@@ -44,5 +43,5 @@ function updateTimer(difference) {
   const ss = Math.floor(msec / 1000);
   msec -= ss * 1000;
 
-  timer.innerHTML = hh + " " + mm + " " + ss;
+  timerContainer.innerHTML = hh + " " + mm + " " + ss;
 }
